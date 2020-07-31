@@ -1,0 +1,106 @@
+:root {
+  --background-color: #F4F5F8;
+  --border-color: #e3e3e5;
+  --circle-color: #E34A10;
+  --cross-color: #6B0743;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  column-gap: 10px;
+  row-gap: 10px;
+  background-color: var(--border-color);
+}
+
+.square {
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+}
+
+svg {
+  stroke-width: 15px;
+  fill: none;
+  stroke-linecap: round;
+  
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.circle {
+  stroke: var(--circle-color);
+  animation: draw 2s linear forwards;
+}
+
+.cross {
+  stroke: var(--cross-color);
+}
+
+.cross line:nth-of-type(1) {
+  animation: 1s linear forwards draw;
+}
+
+.cross line:nth-of-type(2) {
+  animation: 1s linear 0.2s forwards draw;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.winner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.4);
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 3em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  opacity: 0;
+  animation: 0.5s linear 0.5s forwards show;
+}
+
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+}
+
+.winner button {
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid var(--border-color);
+  background-color: var(--border-color);
+  font-size: 0.6em;
+  padding: 0.6em 1em;
+  color: white;
+  cursor: pointer;
+}
